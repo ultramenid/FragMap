@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Generated results (recreate by running the notebook)
+outputs/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+
+# Input data is shared separately; keep only the folder note
+data/*
+!data/README.md

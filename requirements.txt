@@ -1,0 +1,23 @@
+# Python 3.12 or 3.13 (3.14 is not supported yet by pylandstats)
+# Install with:  pip install -r requirements.txt
+
+# Use ready-made packages instead of compiling from source (older computers)
+--prefer-binary
+
+numpy>=2.5
+scipy>=1.18
+pandas>=3.0
+matplotlib>=3.11
+pillow
+plotly>=7.1
+rasterio>=1.4     # 1.4 still has installers for older macOS
+folium>=0.20
+pylandstats>=3.1
+openpyxl>=3.1     # Excel export of the tables
+tqdm>=4.70
+
+# Notebook
+jupyterlab
+ipykernel>=7.3
+ipywidgets>=8.1   # progress bars in Jupyter
+nbformat>=5.11    # plotly figures in notebooks

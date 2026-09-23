@@ -1,0 +1,24 @@
+# Alternative install with Miniforge/conda (use when pip fails, e.g. Intel Mac):
+#   conda env create -f environment.yml
+#   conda activate mangfrag
+#   python src/start.py
+name: mangfrag
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - numpy
+  - scipy
+  - pandas>=3.0
+  - matplotlib
+  - pillow
+  - plotly
+  - rasterio
+  - folium
+  - pylandstats
+  - openpyxl
+  - tqdm
+  - jupyterlab
+  - ipykernel
+  - ipywidgets
+  - nbformat
