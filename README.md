@@ -132,13 +132,50 @@ Everything is saved in the **`outputs`** folder, next to this file:
 
 The Excel workbook includes a `metric_definitions` sheet that explains every measurement, and a `parameters` sheet that records the settings used.
 
-Running the analysis again **overwrites** the files in `outputs/`. To keep a previous run, rename the folder first, e.g. to `outputs_run1`.
+Running the analysis again **overwrites** the files in `outputs/`. To keep a previous run, rename the folder first, e.g. to `outputs_run1`, or set a different `OUT_DIR` (see [Folders](#folders)).
 
 ---
 
 ## Changing the settings
 
-The first grey cell of the notebook holds the settings. Change a number, then **Run → Run All Cells**.
+All settings are in the **first grey cell** of the notebook, under the introduction. It looks like this:
+
+```python
+# Folders (relative to this notebook, or absolute)
+DATA_DIR = Path("data/mangrove_1990-2024")  # input: one classification GeoTIFF per year
+OUT_DIR = Path("outputs")                   # output: figures/, rasters/, tables/, interactive/
+
+# Segmentation
+EDGE_WIDTH_M = 100
+GAP_MAX_HA = 5
+CORE_SMALL_HA = 100
+CORE_LARGE_HA = 200
+
+# Metrics
+ENN = True
+```
+
+**To change a setting:** click in the cell, edit the value, then click **Run → Run All Cells**. Edit only the part after the `=` sign. Keep the quotes `" "` around folder names.
+
+### Folders
+
+| Setting | Default | Meaning |
+|---|---|---|
+| `DATA_DIR` | `"data/mangrove_1990-2024"` | Folder with the input maps. |
+| `OUT_DIR` | `"outputs"` | Folder where all results are saved. It's created automatically if it doesn't exist. |
+
+Folder names can be written two ways:
+
+- **Inside the project folder:** write the path from the project folder, e.g. `Path("data/my_maps")` or `Path("outputs_2026")`.
+- **Anywhere else on your computer:** write the full path with **forward slashes `/`**, also on Windows:
+  - Windows: `Path("C:/Users/yourname/Documents/mangrove_maps")`
+  - Mac: `Path("/Users/yourname/Documents/mangrove_maps")`
+
+  💡 An easy way to get the full path: on Windows, right-click the folder (Windows 10: hold **Shift** while right-clicking) → **Copy as path**, remove the quotes, then change every `\` to `/`. On Mac, right-click the folder, hold **Option**, and choose **Copy "…" as Pathname**.
+
+**Example: keep results from different runs.** Running again with the same `OUT_DIR` overwrites the old results. To keep them, give each run its own folder, e.g. `OUT_DIR = Path("outputs_edge50")`.
+
+### Analysis settings
 
 | Setting | Default | Meaning |
 |---|---|---|
@@ -148,12 +185,17 @@ The first grey cell of the notebook holds the settings. Change a number, then **
 | `CORE_LARGE_HA` | `200` | Core areas this size or bigger (ha) are "large core". Sizes in between are "medium core". |
 | `ENN` | `True` | Also computes the distance between patches. Set it to `False` for a faster run without this measurement. |
 
+The settings used for each run are saved in the `parameters` sheet of the Excel file in `OUT_DIR/tables/`.
+
+> Setting changes are saved with the notebook (JupyterLab saves automatically), so they're still there next time you open it. To go back, use the default values in the tables above.
+
 ---
 
 ## Using your own maps
 
-1. Make a new folder inside `data/`, for example `data/my_maps/`, and put your maps in it.
-2. In the settings cell, change `DATA_DIR = Path("data/mangrove_1990-2024")` to `DATA_DIR = Path("data/my_maps")`.
+1. Put your maps in a folder, for example `data/my_maps/` inside the project, or any folder on your computer.
+2. In the settings cell, set `DATA_DIR` to that folder, e.g. `DATA_DIR = Path("data/my_maps")` (see [Folders](#folders)).
+3. Optionally, set `OUT_DIR` to a new folder, e.g. `Path("outputs_my_maps")`, so results from different map sets don't mix.
 
 Each map must:
 
