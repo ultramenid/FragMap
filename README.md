@@ -1,4 +1,4 @@
-# MangFrag: Mangrove Fragmentation 1990–2024
+# FragMap: Mangrove Fragmentation 1990–2024
 
 This project takes yearly maps of mangrove forest and shows **how the forest has broken up over time**. For each year it:
 
@@ -28,7 +28,7 @@ You don't need any programming experience. Follow the steps below once, and afte
 ## What's in this folder
 
 ```
-MangFrag/
+FragMap/
 ├── start-windows.bat              ← Windows: double-click to start
 ├── start.command                  ← Mac: double-click to start
 ├── mangrove_fragmentation.ipynb   ← the analysis notebook (opens in your browser)
@@ -47,7 +47,7 @@ MangFrag/
 | `mangrove_fragmentation.ipynb` | The analysis notebook. It opens in your web browser. |
 | `data/` | Input maps. **They're not included with the project.** You get them separately and copy them here (see [Step 2](#step-2-start-the-project)). |
 | `outputs/` | Created when you run the analysis. **This is where your results go.** |
-| `src/` | `mangfrag.py` does the analysis, and `start.py` opens the notebook. You don't need to open them. |
+| `src/` | `fragmap.py` does the analysis, and `start.py` opens the notebook. You don't need to open them. |
 | `requirements.txt`, `environment.yml` | Lists of required software. The start files read them automatically. |
 | `.venv/` (hidden) | Created on first start. Holds the installed software. Don't edit it. |
 
@@ -255,7 +255,7 @@ One of the required tools (`pylandstats`) has no ready-made installer for Intel 
 4. Run these lines one at a time. The first one takes 5–10 minutes.
    ```
    conda env create -f environment.yml
-   conda activate mangfrag
+   conda activate fragmap
    python src/start.py
    ```
 5. Next time, just repeat steps 2–3, then run the last two lines.
@@ -270,8 +270,8 @@ source .venv/bin/activate            # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 python src/start.py                  # open the notebook (clears its saved outputs first)
 
-python src/mangfrag.py --check       # quick self-test of the segmentation
-python src/mangfrag.py               # run everything without the notebook, write outputs/
+python src/fragmap.py --check        # quick self-test of the segmentation
+python src/fragmap.py                # run everything without the notebook, write outputs/
 ```
 
 The landscape metrics are computed with `pylandstats` and named like the R package `landscapemetrics` (`lsm_c_ca`, `lsm_c_np`, `lsm_c_ed`, …). They use the same conventions: 8-neighbour patches, landscape boundary not counted as edge, area in ha, edge density in m/ha, and patch density per 100 ha.

@@ -1,8 +1,8 @@
 # Alternative install with Miniforge/conda (use when pip fails, e.g. Intel Mac):
 #   conda env create -f environment.yml
-#   conda activate mangfrag
+#   conda activate fragmap
 #   python src/start.py
-name: mangfrag
+name: fragmap
 channels:
   - conda-forge
 dependencies:

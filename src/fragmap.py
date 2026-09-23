@@ -7,8 +7,8 @@ are renamed to the R `landscapemetrics` names (lsm_c_*), with the same
 conventions: 8-neighbour patches, landscape boundary not counted as edge,
 area in ha, ED in m/ha, PD per 100 ha.
 
-    python src/mangfrag.py           # full analysis, everything written to outputs/
-    python src/mangfrag.py --check   # synthetic self-check of the segmentation
+    python src/fragmap.py            # full analysis, everything written to outputs/
+    python src/fragmap.py --check    # synthetic self-check of the segmentation
 """
 from pathlib import Path
 from types import SimpleNamespace
